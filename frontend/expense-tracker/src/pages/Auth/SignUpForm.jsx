@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import {Link, useNavigate} from "react-router-dom";
 import Input from "../../components/Inputs/Input";
-import {validateEmail} from "../../utilis/helper";
+import {validateEmail, validatePassword} from "../../utilis/helper";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector"
 
 const SignUp = () => {
@@ -30,14 +30,10 @@ const SignUp = () => {
         setError("Please enter a valid email address.");
         return;
       }
-
-      if(!password){
-        setError("Please enter a  password");
-        return;
-      }
-
-      if (password.length < 8){
-        setError("Password must be at least 8 characters long.");
+      
+      const passwordError = validatePassword(password);
+      if (passwordError) {
+        setError(passwordError);
         return;
       }
       setError("");
