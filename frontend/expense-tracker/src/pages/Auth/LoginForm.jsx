@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
-import { validateEmail } from "../../utilis/helper";
+import { validateEmail,validatePassword} from "../../utilis/helper";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -20,8 +20,9 @@ const LoginForm = () => {
       return;
     }
 
-    if (!password) {
-      setError("Please enter the password");
+    const passwordError = validatePassword(password);
+    if (passwordError) {
+      setError(passwordError);
       return;
     }
 
