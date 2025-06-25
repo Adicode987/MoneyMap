@@ -5,12 +5,14 @@ import Input from "../../components/Inputs/Input";
 import { validateEmail,validatePassword} from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
+import { UserContext } from "../../context/UserContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   // Handle Login Form Submit
@@ -40,7 +42,7 @@ const LoginForm = () => {
 
       if (token) {
         localStorage.setItem("token", token);
-        // updateUser(user);
+        updateUser(user);
         navigate("/dashboard");
       }
     } catch (error) {

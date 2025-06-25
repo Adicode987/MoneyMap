@@ -7,9 +7,9 @@ import {
 import React from "react";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignUpForm from "./pages/Auth/SignUpForm";
-// import UserProvider from "./context/UserContext";
+import UserProvider from "./context/UserContext";
 
-// import { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Dashboard/Home";
 import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
@@ -17,7 +17,7 @@ import Expense from "./pages/Dashboard/Expense";
 const App = () => {
   return (
     <div>
-      {/* <UserProvider> */}
+      <UserProvider>
         <Router>
           <Routes>
             <Route path="/" element={<Root />} />
@@ -29,7 +29,7 @@ const App = () => {
           </Routes>
         </Router>
 
-        {/* <Toaster
+        <Toaster
           toastOptions={{
             className: "",
             style: {
@@ -37,8 +37,8 @@ const App = () => {
             },
           }}
         />
-        
-      </UserProvider> */}
+
+      </UserProvider>
     </div>
   );
 };
