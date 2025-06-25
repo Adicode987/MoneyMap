@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/Input";
-import { validateEmail, validatePassword } from "../../utilis/helper";
+import { validateEmail, validatePassword } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector"
 
 const SignUp = () => {

@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
-import { validateEmail,validatePassword} from "../../utilis/helper";
+import { validateEmail,validatePassword} from "../../utils/helper";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -38,7 +40,7 @@ const LoginForm = () => {
 
       if (token) {
         localStorage.setItem("token", token);
-        updateUser(user);
+        // updateUser(user);
         navigate("/dashboard");
       }
     } catch (error) {
