@@ -21,7 +21,6 @@ const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
         label="Total Balance"
         totalAmount={`₹${totalBalance}`}
         colors={COLORS}
-        showTextAnchor
       />
     </div>
   );
