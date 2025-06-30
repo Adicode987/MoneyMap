@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../components/Layouts/DashboardLayout";
-import { useUserAuth } from "../../hooks/useUserAuth";
-import { useNavigate } from "react-router-dom";
-import { API_PATHS } from "../../utils/apiPaths";
-import axiosInstance from "../../utils/axiosInstance";
-import InfoCard from "../../components/Cards/InfoCard";
-import { addThousandsSeparator } from "../../utils/helper";
+
 import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
 import { IoMdCard } from "react-icons/io";
-import FinanceOverview from "../../components/Dashboard/FinanceOverview";
+import { useNavigate } from "react-router-dom";
+import InfoCard from "../../components/Cards/InfoCard";
+import { useUserAuth } from "../../hooks/useUserAuth";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPaths";
+import { addThousandsSeparator } from "../../utils/helper";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions";
+import FinanceOverview from "../../components/Dashboard/FinanceOverview";
 
 const Home = () => {
   useUserAuth();
@@ -29,7 +30,7 @@ const Home = () => {
       );
 
       if (response.data) {
-        setDashboardData;
+        setDashboardData(response.data);
       }
     } catch (error) {
       console.error("Something went wrong.Please try again:", error);
@@ -64,7 +65,7 @@ const Home = () => {
           <InfoCard
             icon={<LuHandCoins />}
             label="Total Expense"
-            value={addThousandsSeparator(dashboardData?.totalExpense || 0)}
+            value={addThousandsSeparator(dashboardData?.totalExpenses || 0)}
             color="bg-red-500"
           />
         </div>

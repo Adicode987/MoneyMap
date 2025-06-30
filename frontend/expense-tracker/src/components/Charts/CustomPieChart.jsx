@@ -9,13 +9,8 @@ import {
 import CustomLegend from "./CustomLegend";
 import CustomTooltip from "./CustomTooltip";
 
-const CustomPieChart = ({
-  data,
-  label,
-  totalAmount,
-  showTextAnchor,
-  colors,
-}) => {
+const CustomPieChart = ({ data, label, totalAmount, showTextAnchor, colors }) => {
+
   return (
     <ResponsiveContainer width="100%" height={380}>
       <PieChart>
