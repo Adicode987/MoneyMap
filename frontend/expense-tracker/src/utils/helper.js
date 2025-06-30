@@ -42,3 +42,14 @@ export const getInitials = (name) => {
 
   return initials.toUpperCase();
 };
+
+export const addThousandsSeparator = (num) => {
+  if (num === null || num === undefined || isNaN(num)) {
+    return "";
+  }
+  const [integerPart, fractionalPart] = num.toString().split(".");
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return fractionalPart !== undefined
+    ? `${formattedInteger}.${fractionalPart}`
+    : formattedInteger;
+};
