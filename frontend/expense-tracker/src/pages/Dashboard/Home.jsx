@@ -46,7 +46,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchDashboardData();
-    return () => {};
+    return () => { };
   }, []);
 
   return (
@@ -86,26 +86,26 @@ const Home = () => {
             totalExpense={dashboardData?.totalExpenses || 0}
           />
 
-          <Last30DaysExpenses
-            data={dashboardData?.last30DaysExpenses?.transactions || []}
-            />
-
           <ExpenseTransactions
             transactions={dashboardData?.last30DaysExpenses?.transactions || []}
             onSeeMore={() => navigate("/expense")}
           />
 
-          <RecentIncome
-              transactions={dashboardData?.last60DaysIncome?.transactions || []}
-              onSeeMore={() => navigate("/income")}
+          <Last30DaysExpenses
+            data={dashboardData?.last30DaysExpenses?.transactions || []}
           />
-          
-          <RecentIncomeWithChart
-              data={dashboardData?.last60DaysIncome?.transactions?.slice(0, 4) || []}
-              totalIncome={dashboardData?.totalIncome || 0}  
-            />
 
-           
+          <RecentIncomeWithChart
+            data={dashboardData?.last60DaysIncome?.transactions || []}
+            totalIncome={dashboardData?.totalIncome || 0}
+          />
+
+          <RecentIncome
+            transactions={dashboardData?.last60DaysIncome?.transactions || []}
+            onSeeMore={() => navigate("/income")}
+          />
+
+
         </div>
       </div>
     </DashboardLayout>

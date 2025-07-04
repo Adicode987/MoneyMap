@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CustomPieChart from "../Charts/CustomPieChart";
+import { generateVibrantColors } from "../../utils/helper";
 
-
-const COLORS = ['#875CF5', '#FA2C37', '#FF6900', '#4f39f6'];
 
 const RecentIncomeWithChart = ({ data, totalIncome }) => {
 
-        const [charData, setCharData] = useState([]);
+    const [charData, setCharData] = useState([]);
+    const [colors, setColors] = useState([]);
 
     const prepareChartData = () => {
         const dataArr = data?.map((item) => ({
@@ -15,13 +15,14 @@ const RecentIncomeWithChart = ({ data, totalIncome }) => {
         }));
 
         setCharData(dataArr);
+        setColors(generateVibrantColors(dataArr.length));
     };
 
 
     useEffect(() => {
         prepareChartData();
 
-        return () => {};
+        return () => { };
     }, [data]);
 
 
@@ -33,9 +34,9 @@ const RecentIncomeWithChart = ({ data, totalIncome }) => {
 
             <CustomPieChart
                 data={charData}
-                label="Total Income"
+                label="Total"
                 totalAmount={`₹${totalIncome}`}
-                colors={COLORS}
+                colors={colors}
             />
         </div>
     );

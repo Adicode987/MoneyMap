@@ -66,3 +66,10 @@ export const prepareExpenseBarChartData = (data = []) => {
 
   return chartData;
 };
+
+export const generateVibrantColors = (count) => {
+  return Array.from({ length: count }, (_, i) => {
+    const hue = Math.round((360 / count) * i);
+    return `hsl(${hue}, 85%, 55%)`;
+  });
+};
