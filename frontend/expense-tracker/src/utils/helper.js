@@ -1,3 +1,5 @@
+import { LuAmbulance } from "react-icons/lu";
+
 export const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
@@ -43,6 +45,7 @@ export const getInitials = (name) => {
   return initials.toUpperCase();
 };
 
+
 export const addThousandsSeparator = (num) => {
   if (num === null || num === undefined || isNaN(num)) {
     return "";
@@ -52,4 +55,14 @@ export const addThousandsSeparator = (num) => {
   return fractionalPart !== undefined
     ? `${formattedInteger}.${fractionalPart}`
     : formattedInteger;
+};
+
+export const prepareExpenseBarChartData = (data = []) => {
+  const chartData = data.map((item) => ({
+    category: item?.category,
+    amount: item?.amount,
+  
+}));
+
+  return chartData;
 };
