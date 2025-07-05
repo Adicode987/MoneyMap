@@ -1,4 +1,5 @@
 import { LuAmbulance } from "react-icons/lu";
+import moment from "moment";
 
 export const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -72,4 +73,16 @@ export const generateVibrantColors = (count) => {
     const hue = Math.round((360 / count) * i);
     return `hsl(${hue}, 85%, 55%)`;
   });
+};
+
+export const prepareIncomeBarChartData = (data = []) => {
+  const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const chartData = sortedData.map((item) => ({
+    month: moment(item?.date).format('Do MMM'),
+    amount: item?.amount,
+    source: item?.source,
+  }));
+
+  return chartData;
 };
